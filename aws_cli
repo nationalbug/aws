@@ -1,0 +1,50 @@
+The AWS CLI tool is an essential piece of the AWS administrator's toolkit.
+It is one of the quickest ways to interact with the API. It can be automated with scripts.
+
+Installation and upgrade 
+
+on macOsx
+  pip install awscli
+  pip install --upgrade awscli
+
+
+To set up the default profile
+   aws configure
+
+To create Named profiles
+Named profile are useful for switching between users with different levels of access or between users in different accounts.
+   aws configure --profile <profile-name>
+Once you have responded to the prompts, you can reference the named profile by passing the --profile <profile-name> option with command.
+Run help to see available commands/services
+    aws help
+    
+CLI can be configured to output in JSON, table, or text format. To control the output type, use the --output option.
+To set a default output type for all your commands, set the output parameter for your profile.
+
+To generate a sample JSON object that will be accepted, run the command with the -- generate-cli-skeleton option
+Then copy, edit, and use this object to define your command options without passing lots of individual options. It works best for commands with arrays of options or a variable number of options.
+
+You can also get a preview of the output of a command by calling the command with the -- generate-cli-skeleton output option. You can see a response without actually calling the API
+
+
+You can enable tab-completion of commands, subcommands, and options by configuring the completer included with the CLI tool.
+load the completer with the following command:
+   complete -C 'which aws_completer'aws
+By default, the aws_completer program is installed in /usr/local/bin. If your tool is installed to a non-standard location, you will need to find it and change the which aws_completer command to the relevant path.
+
+
+Querying
+The CLI tool supports transforming the response from the API with the --query option. This option takes a JMESPath query as a parameter and returns the query result.
+As the query is processed as part of the command, it takes place on the server, not the client. By offloading work to the server, you can reduce the size of the resulting payload and improve response times.
+
+JMESPath is a query language for JSON.
+http://jmespath.org/.
+
+jq is a lightweight tool for processing and transforming JSON. It follows the Unix philosophy of doing one thing and doing it well. It can be found at https://stedolan.github.io/jq/.
+You can pipe JSON results from the CLI tool to it, and easily transform the results for use elsewhere. This example uses jq's property name selectors to convert JSON output to text.
+
+A supercharged AWS command line interface (CLI).
+https://github.com/donnemartin/saws
+
+An integrated shell for working with the AWS CLI.
+https://github.com/awslabs/aws-shell
